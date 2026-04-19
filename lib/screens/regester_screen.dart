@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:travello_app/screens/home_screen.dart';
-import 'package:travello_app/screens/regester_screen.dart';
 import 'package:travello_app/widgets/text_form_field_widget.dart';
 
-class LogInScreen extends StatefulWidget {
-  const LogInScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+  static const String registerScreenRoute = "RegisterScreen";
 
-  static const String logInScreenRoute = "LogInScreen";
   @override
-  State<LogInScreen> createState() => _LogInScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LogInScreenState extends State<LogInScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   bool? checkedValue = false;
 
   @override
@@ -27,7 +25,7 @@ class _LogInScreenState extends State<LogInScreen> {
             SizedBox(height: 26),
 
             Text(
-              "Welcome back",
+              "Get Started",
               style: TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.w800,
@@ -36,18 +34,31 @@ class _LogInScreenState extends State<LogInScreen> {
             ),
 
             Text(
-              "sign in to access your account",
+              "by creating a free account.",
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w300,
                 color: Color(0xff252525),
               ),
             ),
-            SizedBox(height: 80),
+            SizedBox(height: 40),
             TextFormFieldWidget(
-              titel: "Enter your email",
+              titel: "Full name",
+              iconPath: "assets/icons/user_icon.png",
+            ),
+
+            SizedBox(height: 12),
+            TextFormFieldWidget(
+              titel: "Valid email",
               iconPath: "assets/icons/email_icon.png",
             ),
+
+            SizedBox(height: 12),
+            TextFormFieldWidget(
+              titel: "Phone number",
+              iconPath: "assets/icons/phone_icon.png",
+            ),
+
             SizedBox(height: 12),
             TextFormFieldWidget(
               titel: "password",
@@ -60,16 +71,8 @@ class _LogInScreenState extends State<LogInScreen> {
                     contentPadding: EdgeInsets.symmetric(horizontal: 0),
                     visualDensity: VisualDensity.compact,
                     title: Text(
-                      "Remember me",
+                      "By checking the box you agree to our Terms and Conditions",
                       style: TextStyle(fontSize: 9, fontWeight: .w500),
-                    ),
-                    secondary: Text(
-                      "Forgrt password?",
-                      style: TextStyle(
-                        fontSize: 9,
-                        fontWeight: .w500,
-                        color: Color(0xffFF3951),
-                      ),
                     ),
                     value: checkedValue,
                     onChanged: (newValue) {
@@ -91,7 +94,7 @@ class _LogInScreenState extends State<LogInScreen> {
           children: [
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(HomeScreen.homeScreenRoute);
+                Navigator.of(context).pop();
               },
               padding: EdgeInsets.symmetric(vertical: 13),
               shape: RoundedRectangleBorder(
@@ -111,13 +114,11 @@ class _LogInScreenState extends State<LogInScreen> {
             SizedBox(height: 10),
             GestureDetector(
               onTap: () {
-                Navigator.of(
-                  context,
-                ).pushNamed(RegisterScreen.registerScreenRoute);
+                Navigator.of(context).pop();
               },
               child: Text.rich(
                 TextSpan(
-                  text: "New member ? ",
+                  text: "Already a member?",
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: .w500,
@@ -125,7 +126,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   ),
                   children: [
                     TextSpan(
-                      text: "Register now",
+                      text: "Login in",
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: .w500,
