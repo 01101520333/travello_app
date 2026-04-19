@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:travello_app/widgets/text_form_field_widget.dart';
 
 class LogInScreen extends StatelessWidget {
-  LogInScreen({super.key});
+  const LogInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
