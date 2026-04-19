@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:travello_app/widgets/text_form_field_widget.dart';
 
-class LogInScreen extends StatelessWidget {
+class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
+
+  @override
+  State<LogInScreen> createState() => _LogInScreenState();
+}
+
+class _LogInScreenState extends State<LogInScreen> {
+  bool? checkedValue = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        padding: EdgeInsets.all(20),
         child: Column(
           children: [
+            SizedBox(height: 40),
+
             Image.asset("assets/images/logo.png", height: 150, width: 200),
+            SizedBox(height: 26),
 
             Text(
               "Welcome back",
@@ -29,26 +40,92 @@ class LogInScreen extends StatelessWidget {
                 color: Color(0xff252525),
               ),
             ),
+            SizedBox(height: 80),
             TextFormFieldWidget(
               titel: "Enter your email",
               iconPath: "assets/icons/email_icon.png",
             ),
-
+            SizedBox(height: 12),
             TextFormFieldWidget(
               titel: "password",
               iconPath: "assets/icons/passwered_icon.png",
             ),
+            Row(
+              children: [
+                Expanded(
+                  child: CheckboxListTile(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                    visualDensity: VisualDensity.compact,
+                    title: Text(
+                      "Remember me",
+                      style: TextStyle(fontSize: 9, fontWeight: .w500),
+                    ),
+                    secondary: Text(
+                      "Forgrt password?",
+                      style: TextStyle(
+                        fontSize: 9,
+                        fontWeight: .w500,
+                        color: Color(0xffFF3951),
+                      ),
+                    ),
+                    value: checkedValue,
+                    onChanged: (newValue) {
+                      checkedValue = newValue;
+                      setState(() {});
+                    },
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: Column(
-        children: [
-          Container(
-            height: 50,
-            color: Color(0xffFF3951),
-            child: Text("Next >"),
-          ),
-        ],
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisSize: .min,
+          children: [
+            MaterialButton(
+              onPressed: () {},
+              padding: EdgeInsets.symmetric(vertical: 13),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              color: Color(0xffFF3951),
+              minWidth: double.infinity,
+              child: Text(
+                "Next >",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: .w500,
+                  color: Color(0xffFFFFFF),
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            Text.rich(
+              TextSpan(
+                text: "New member ? ",
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: .w500,
+                  color: Color(0xff000000),
+                ),
+                children: [
+                  TextSpan(
+                    text: "Register now",
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: .w500,
+                      color: Color(0xffFF3951),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
