@@ -5,6 +5,7 @@ import 'package:travello_app/screens/log_in_screen.dart';
 
 class Splasher extends StatefulWidget {
   const Splasher({super.key});
+  static const String splasherRoute = "Splasher";
 
   @override
   State<Splasher> createState() => _SplasherState();
