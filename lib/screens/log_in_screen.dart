@@ -55,28 +55,34 @@ class _LogInScreenState extends State<LogInScreen> {
             ),
             Row(
               children: [
-                Expanded(
-                  child: CheckboxListTile(
-                    contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                    visualDensity: VisualDensity.compact,
-                    title: Text(
-                      "Remember me",
-                      style: TextStyle(fontSize: 9, fontWeight: .w500),
+                Row(
+                  // mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Checkbox(
+                      value: checkedValue,
+                      onChanged: (newValue) {
+                        setState(() {
+                          checkedValue = newValue;
+                        });
+                      },
                     ),
-                    secondary: Text(
-                      "Forgrt password?",
+                    const Text(
+                      "Remember me",
                       style: TextStyle(
                         fontSize: 9,
-                        fontWeight: .w500,
-                        color: Color(0xffFF3951),
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff252525),
                       ),
                     ),
-                    value: checkedValue,
-                    onChanged: (newValue) {
-                      checkedValue = newValue;
-                      setState(() {});
-                    },
-                    controlAffinity: ListTileControlAffinity.leading,
+                  ],
+                ),
+                Spacer(),
+                Text(
+                  "Forgot password?",
+                  style: TextStyle(
+                    fontSize: 9,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xffFF3951),
                   ),
                 ),
               ],

@@ -65,21 +65,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
               iconPath: "assets/icons/passwered_icon.png",
             ),
             Row(
+              // mainAxisSize: MainAxisSize.min,
               children: [
-                Expanded(
-                  child: CheckboxListTile(
-                    contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                    visualDensity: VisualDensity.compact,
-                    title: Text(
-                      "By checking the box you agree to our Terms and Conditions",
-                      style: TextStyle(fontSize: 9, fontWeight: .w500),
-                    ),
-                    value: checkedValue,
-                    onChanged: (newValue) {
+                Checkbox(
+                  value: checkedValue,
+                  onChanged: (newValue) {
+                    setState(() {
                       checkedValue = newValue;
-                      setState(() {});
-                    },
-                    controlAffinity: ListTileControlAffinity.leading,
+                    });
+                  },
+                ),
+                const Text(
+                  "By checking the box you agree to our Terms and Conditions",
+                  style: TextStyle(
+                    fontSize: 9,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff252525),
                   ),
                 ),
               ],
